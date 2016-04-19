@@ -53,7 +53,28 @@ class DenonControlPlayer(xbmc.Player):
             }
             log(data)
             connection.request("POST", target, urllib.urlencode(data))
-        
+
+        elif self.settings.music_graphic_eq_change:
+            # Make sure Audyssey is off in EQ mode
+            target="/SETUP/AUDIO/AUDYSSEY/s_audio.asp"
+            data = {
+                'setPureDirectOn': 'OFF',
+                'setSetupLock': 'OFF',
+                'listRoomEq': 'OFF',
+                'listRoomEqValue': 'Set'
+            }
+            log(data)
+            connection.request("POST", target, urllib.urlencode(data))
+            connection.getresponse()
+            
+            target="/SETUP/AUDIO/GRAPHICEQ/s_audio.asp"
+            data = {
+                'setPureDirectOn': 'OFF',
+                'setSetupLock': 'OFF',
+                'radioGraphicEQ': self.settings.music_graphic_eq_mode
+            }
+            log(data)
+            connection.request("POST", target, urllib.urlencode(data))
 
     def apply_video_settings(self):
         """
@@ -70,6 +91,28 @@ class DenonControlPlayer(xbmc.Player):
                 'listRoomEqValue': 'Set',       
                 'radioDynamicEq': self.settings.video_audyssey_dyneq,
                 'radioDynamicVol': self.settings.video_audyssey_dynvol,
+            }
+            log(data)
+            connection.request("POST", target, urllib.urlencode(data))
+        
+        elif self.settings.video_graphic_eq_change:
+            # Make sure Audyssey is off in EQ mode
+            target="/SETUP/AUDIO/AUDYSSEY/s_audio.asp"
+            data = {
+                'setPureDirectOn': 'OFF',
+                'setSetupLock': 'OFF',
+                'listRoomEq': 'OFF',
+                'listRoomEqValue': 'Set'
+            }
+            log(data)
+            connection.request("POST", target, urllib.urlencode(data))
+            connection.getresponse()
+            
+            target="/SETUP/AUDIO/GRAPHICEQ/s_audio.asp"
+            data = {
+                'setPureDirectOn': 'OFF',
+                'setSetupLock': 'OFF',
+                'radioGraphicEQ': self.settings.video_graphic_eq_mode
             }
             log(data)
             connection.request("POST", target, urllib.urlencode(data))

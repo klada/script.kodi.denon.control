@@ -7,4 +7,9 @@
   <string id="33104">Light</string>
   <string id="33105">Medium</string>
   <string id="33106">Heavy</string>
+  
+  <!-- Graphic-EQ -->
+  <string id="33200">Don't change setting</string>
+  <string id="33201">Off</string>
+  <string id="33202">On</string>
 </strings>

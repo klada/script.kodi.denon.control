@@ -12,17 +12,20 @@
 
         <setting label="Surround-Parameter (TODO)" type="lsep" />
         <setting label="Restorer (TODO)" type="lsep" />
-        <setting label="Grafic-EQ (TODO)" type="lsep" />
+        
+        <setting label="Graphic-EQ" type="lsep" />
+        <setting default="0" id="music_graphic_eq" label="Graphic-EQ Mode" type="enum" lvalues="33200|33201|33202" enable="eq(-7,false)" />
     </category>
     <category label="Video Settings">
         <setting label="Audyssey" type="lsep" />
         <setting default="true" id="video_audyssey_enable" label="Adjust Audyssey Settings" type="bool" />
         <setting default="1" id="video_audyssey_mode" label="MultEQ XT32" type="enum"  lvalues="33100|33101|33102|33103" visible="eq(-1,true)" />
-        <setting default="true" id="video_audyssey_dyneq" label="Dynamic EQ" type="bool" visible="eq(-2,true)" />
-        <setting default="0" id="video_audyssey_dynvol" label="Dynamic Volume" type="enum" lvalues="33100|33104|33105|33106" visible="eq(-3,true)" />
+        <setting default="true" id="video_audyssey_dyneq" label="Dynamic EQ" type="bool" visible="eq(-2,true) + gt(-1,0)" />
+        <setting default="0" id="video_audyssey_dynvol" label="Dynamic Volume" type="enum" lvalues="33100|33104|33105|33106" visible="eq(-3,true) + gt(-2,0)" />
         
         <setting label="Surround-Parameter (TODO)" type="lsep" />
         <setting label="Restorer (TODO)" type="lsep" />
-        <setting label="Grafic-EQ (TODO)" type="lsep" />
+        <setting label="Graphic-EQ" type="lsep" />
+        <setting default="0" id="video_graphic_eq" label="Graphic-EQ Mode" type="enum" lvalues="33200|33201|33202" enable="eq(-7,false)" />
     </category>
 </settings>

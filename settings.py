@@ -36,6 +36,13 @@ class Settings(object):
     def get_bool(self, setting_id):
         return self.addon.getSetting(setting_id) == 'true'
 
+    def get_graphic_eq_mode(self, setting_id):
+        setting = int(self.addon.getSetting(setting_id))
+        if setting != 2:
+            return 'OFF'
+        else:
+            return 'ON'
+
     def read_settings(self):
         self.avr_ip             = self.addon.getSetting("avr_ip")
 
@@ -44,7 +51,13 @@ class Settings(object):
         self.music_audyssey_dyneq = self.get_audyssey_dyneq("music_audyssey_dyneq")
         self.music_audyssey_dynvol = self.get_audyssey_dynvol("music_audyssey_dynvol")
         
+        self.music_graphic_eq_change = int(self.addon.getSetting("music_graphic_eq")) > 0
+        self.music_graphic_eq_mode = self.get_graphic_eq_mode("music_graphic_eq")
+        
         self.video_audyssey_enable = self.get_bool("video_audyssey_enable")
         self.video_audyssey_mode = self.get_audyssey_mode("video_audyssey_mode")
         self.video_audyssey_dyneq = self.get_audyssey_dyneq("video_audyssey_dyneq")
         self.video_audyssey_dynvol = self.get_audyssey_dynvol("video_audyssey_dynvol")
+
+        self.video_graphic_eq_change = int(self.addon.getSetting("video_graphic_eq")) > 0
+        self.video_graphic_eq_mode = self.get_graphic_eq_mode("video_graphic_eq")
